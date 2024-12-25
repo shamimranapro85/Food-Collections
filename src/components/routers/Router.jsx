@@ -45,10 +45,10 @@ export const AllRouter = () => {
     dispatch(functionStore({ onLoginOutClick }));
     document.title =
       pathname == "/"
-        ? "Home | WebSite Name"
+        ? "Home | FoodOrder"
         : currentPath.charAt(0).toUpperCase() +
           currentPath.slice(1).toLowerCase() +
-          " | WebSite Name";
+          " | FoodOrder";
     return () => {};
   }, [pathname]);
   // ====================dynamic rout title
