@@ -23,9 +23,9 @@ const AddFood = () => {
     const newData = {
       ...data,
       status: "available",
-      email,
-      displayName,
-      photoURL,
+      foodDonationEmail: email,
+      foodDonationEmailDisplayName: displayName,
+      foodDonationEmailPhotoURL: photoURL,
     };
     dispatch(postData({ url: "/addFood", data: newData }));
     toast.success("Food added", {

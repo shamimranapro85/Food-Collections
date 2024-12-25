@@ -41,7 +41,7 @@ const Home = () => {
       <Slider />
       <div className="Featured py-8 flex justify-center items-center flex-col">
         <h1 className="text-center font-bold text-4xl pb-4">Featured Foods</h1>
-        <div className="grid py-4 grid-cols-1 md:grid-cols-2 px-4 lg:grid-cols-4 gap-4 border rounded-md">
+        <div className="grid py-4 grid-cols-1 md:grid-cols-2 px-4 lg:grid-cols-3 gap-4 border rounded-md">
           {top6data.length > 0 ? (
             top6data.map((item, indx) => (
               <div
@@ -62,13 +62,13 @@ const Home = () => {
                       {item.status}
                     </div>
                   ) : (
-                    <div className="rounded-sm bg-green-300 p-1 text-center inline-block">
+                    <div className="rounded-sm bg-yellow-200 p-1 text-center inline-block">
                       {item.status}
                     </div>
                   )}
                 </p>
                 <button
-                  onClick={() => navigate("/ViewDetails", { state: item._id })}
+                  onClick={() => navigate(`/food/${item._id}`, { state: item._id })}
                   className="btn  btn-sm bg-green-400"
                 >
                   View Details

@@ -117,7 +117,7 @@ export const AllRouter = () => {
           }
         ></Route>
         <Route
-          path="/ViewDetails"
+          path="/food/:id"
           element={
             <Private>
               <ViewDetails />

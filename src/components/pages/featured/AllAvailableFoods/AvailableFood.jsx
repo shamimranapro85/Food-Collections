@@ -3,19 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router";
 import { fetchAnyData } from "../../../redux/slice/FetchAnyData";
 import Spinner from "../../shared/Spinner";
+import { fetchAllAvailableFood } from "../../../redux/slice/allAvailableFood";
 
 const AvailableFood = () => {
   const { data, error, loading } = useSelector(
-    (state) => state.fetchAnyDataState
+    (state) => state.fetchAvailableFoodState
   );
   const navigate = useNavigate();
   const [allFoods, setAllFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
+  const [LayOut, setLayout] = useState(
+    "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAnyData("/allFood"));
+    dispatch(fetchAllAvailableFood("/allAvailableFood"));
   }, [dispatch]);
 
   useEffect(() => {
@@ -55,7 +59,7 @@ const AvailableFood = () => {
       <h1 className="text-center font-bold text-4xl pb-4">
         All Available Foods
       </h1>
-      <div className="flex gap-2 p-2 w-full justify-end items-center">
+      <div className="flex gap-2 p-2 flex-wrap w-full justify-end items-center">
         <input
           placeholder="Search Food"
           className="input-sm border rounded-lg"
@@ -65,8 +69,14 @@ const AvailableFood = () => {
         <button className="btn btn-sm" onClick={handleSort}>
           Sort By Expire Date {sortOrder === "asc" ? "↑" : "↓"}
         </button>
+        <button
+          className="btn btn-sm"
+          onClick={() => setLayout("grid-cols-2 md:grid-cols-2 lg:grid-cols-2")}
+        >
+          Change Layout
+        </button>
       </div>
-      <div className="grid py-4 grid-cols-1 md:grid-cols-2 px-4 lg:grid-cols-4 gap-4 border rounded-md">
+      <div className={`grid py-4   px-4  ${LayOut}  gap-4 border rounded-md`}>
         {filteredFoods.length > 0 ? (
           filteredFoods.map((item, indx) => (
             <div
@@ -93,7 +103,9 @@ const AvailableFood = () => {
                 )}
               </p>
               <button
-                onClick={() => navigate("/ViewDetails", { state: item._id })}
+                onClick={() =>
+                  navigate(`/food/${item._id}`, { state: item._id })
+                }
                 className="btn btn-sm bg-green-400"
               >
                 View Details
