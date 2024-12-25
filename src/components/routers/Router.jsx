@@ -25,6 +25,7 @@ import { functionStore } from "../redux/slice/exportFronComponents";
 import useInterceptor from "../featured/axios";
 import ManageMyFoods from "../pages/featured/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../pages/featured/MyFoodRequest/MyFoodRequest";
+import Home from "../pages/home/Home";
 
 export const AllRouter = () => {
   const axiosInstance = useInterceptor();
@@ -37,6 +38,17 @@ export const AllRouter = () => {
 
   const onLoginOutClick = (message) => {
     signOut(auth);
+    toast.warning('LogOut', {
+      position: "top-center",
+      autoClose: 500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Flip,
+      });
     return navigate("/login");
   };
 
@@ -74,6 +86,7 @@ export const AllRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />}>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/forgot" element={<Forgot />}></Route>

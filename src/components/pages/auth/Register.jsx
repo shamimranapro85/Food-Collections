@@ -12,6 +12,7 @@ import { Flip, toast } from "react-toastify";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { auth } from "../../firebase/firebase.confige";
 import useInterceptor from "../../featured/axios";
+import axios from "axios";
 
 const provider = new GoogleAuthProvider();
 
@@ -53,7 +54,7 @@ const Register = () => {
         })
           .then(async () => {
             // console.log("update user : ", name);
-            await axiosInstance.post("/login", e, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_baseURL}/login`, e);
             toast.success("Register successfully and Login", {
               position: "top-right",
               autoClose: 1000,
@@ -83,16 +84,27 @@ const Register = () => {
 
   const signINWithGoogle = () => {
     signInWithPopup(auth, provider)
-      .then((data) => {
+      .then(async (data) => {
+        await axios.post(`${import.meta.env.VITE_baseURL}/login`, data);
         updateProfile(auth.currentUser, {
           photoURL: data?.user?.photoURL,
         }).then(() => {
-          //   console.log(data.user.photoURL);
+          toast.success("Login Successfully", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Flip,
+          });
           return navigate(location?.state ? location.state : "/");
         });
       })
       .catch((err) => {
-        setError(err.message);
+        console.log(err);
       });
   };
   return (

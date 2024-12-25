@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../featured/axios";
 
 // 1. Create an async thunk action for making an API call
-export const postData = createAsyncThunk("postData/fetchData", async (url) => {
-  const response = await axiosInstance.post(url);
+export const postData = createAsyncThunk("postData/fetchData", async (payload) => {
+  const response = await axiosInstance.post(payload.url, payload.data);
   return response;
 });
 

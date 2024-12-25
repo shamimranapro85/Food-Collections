@@ -15,6 +15,7 @@ import { auth } from "../../firebase/firebase.confige";
 
 import useInterceptor from "../../featured/axios";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Login = () => {
   const axiosInstance = useInterceptor();
@@ -77,7 +78,7 @@ const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(async (e) => {
-        await axiosInstance.post("/login", e, { withCredentials: true });
+        await axios.post(`${import.meta.env.VITE_baseURL}/login`, e);
         navigate(location?.state ? location.state : "/");
         toast.success("Sign in successfully", {
           position: "top-right",
@@ -99,11 +100,10 @@ const Login = () => {
   const signINWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then(async (data) => {
-        await axiosInstance.post(`/login`, data, { withCredentials: true });
+        await axios.post(`${import.meta.env.VITE_baseURL}/login`, data);
         updateProfile(auth.currentUser, {
           photoURL: data?.user?.photoURL,
         }).then(() => {
-          //   console.log(data.user.photoURL);
           toast.success("Login Successfully", {
             position: "top-right",
             autoClose: 1000,
