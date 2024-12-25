@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    background: rgb(48, 48, 48);
+    color:  white;
+}
+
+.active:hover{
+    background: rgb(77, 77, 77);
+    color:  white;
+}
+
+body{
+    position: relative;
+}
