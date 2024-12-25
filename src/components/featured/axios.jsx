@@ -6,6 +6,9 @@ export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_baseURL,
   withCredentials: true,
 });
+export const axiosBaseUrl = axios.create({
+  baseURL: import.meta.env.VITE_baseURL,
+});
 
 const useInterceptor = () => {
   const functionState = useSelector((state) => state.functionState);

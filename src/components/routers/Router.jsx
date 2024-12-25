@@ -26,6 +26,7 @@ import useInterceptor from "../featured/axios";
 import ManageMyFoods from "../pages/featured/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../pages/featured/MyFoodRequest/MyFoodRequest";
 import Home from "../pages/home/Home";
+import ViewDetails from "../pages/featured/View Details/ViewDetails";
 
 export const AllRouter = () => {
   const axiosInstance = useInterceptor();
@@ -112,6 +113,14 @@ export const AllRouter = () => {
           element={
             <Private>
               <MyFoodRequest />
+            </Private>
+          }
+        ></Route>
+        <Route
+          path="/ViewDetails"
+          element={
+            <Private>
+              <ViewDetails />
             </Private>
           }
         ></Route>

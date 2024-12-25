@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { axiosInstance } from "../../../featured/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { postData } from "../../../redux/slice/postData";
-
+import PacmanLoader from "react-spinners/PacmanLoader";
+import { Flip, toast } from "react-toastify";
 const AddFood = () => {
   const select_userData = useSelector((state) => state.UserSate);
-  const dispatch = useDispatch()
+  const postDataState = useSelector((state) => state.postDataState);
+  const dispatch = useDispatch();
 
+  const { loading } = postDataState;
   const {
     user: { email, displayName, photoURL },
   } = select_userData;
@@ -19,14 +22,27 @@ const AddFood = () => {
 
     const newData = {
       ...data,
+      status: "available",
       email,
       displayName,
       photoURL,
     };
-    dispatch(postData(""))
-
-    console.log(newData);
+    dispatch(postData({ url: "/addFood", data: newData }));
+    toast.success("Food added", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Flip,
+    });
   };
+
+  console.log(postDataState);
+
   return (
     <div className="hero  min-h-screen">
       <div className="hero-content flex-col">
@@ -109,8 +125,15 @@ const AddFood = () => {
             </div>
 
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary">
-                Add Food
+              <button
+                type="submit"
+                className="btn overflow-hidden flex flex-row gap-1 btn-primary"
+              >
+                {loading ? (
+                  <PacmanLoader className="object-cover !w-4 flex" />
+                ) : (
+                  "Add Food"
+                )}
               </button>
             </div>
           </form>

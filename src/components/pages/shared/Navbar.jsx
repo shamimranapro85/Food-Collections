@@ -51,13 +51,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {NavItem}
           </ul>
         </div>
         <Link to={"/"} className="btn-sm btn btn-ghost text-xl">
-          FOOD COLLECTIONS
+          <span>FOOD <span className="hidden md:inline">COLLECTIONS</span></span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -75,6 +75,7 @@ const Navbar = () => {
               >
                 LogOut
               </button>
+             
               <div className="group relative ">
                 <NavLink
                   to={"/Profile"}
@@ -84,7 +85,7 @@ const Navbar = () => {
                 >
                   <img src={Selected_UserDAta?.user?.photoURL} alt="img" />
                 </NavLink>
-                <div className="hidden group-hover:flex w-max p-2 absolute right-1 top-8 rounded z-50 shadow-lg flex-col">
+                <div className="hidden group-hover:flex bg-base-100 w-max p-2 absolute right-1 top-8 rounded z-50 shadow-lg flex-col">
                   {Selected_UserDAta.user?.displayName}{" "}
                 </div>
               </div>
@@ -98,6 +99,7 @@ const Navbar = () => {
             <NavLink to={"/register"} className={"btn-sm btn capitalize"}>
               Register
             </NavLink>
+         
           </>
         )}
       </div>

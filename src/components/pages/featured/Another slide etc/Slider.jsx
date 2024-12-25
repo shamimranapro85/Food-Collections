@@ -13,7 +13,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 export default function Slider() {
   return (
     <>
-      <div className="h-64">
+      <div className="h-64 py-8 overflow-hidden rounded-lg">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -26,25 +26,25 @@ export default function Slider() {
           }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
+          className="mySwiper overflow-hidden rounded-md"
         >
           <SwiperSlide>
             <img
-              className="flex object-cover w-full"
+              className="flex rounded-md object-cover w-full"
               src="./image/1.jpg"
               alt=""
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              className="flex object-cover w-full"
+              className="flex rounded-md object-cover w-full"
               src="./image/2.jpg"
               alt=""
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              className="flex object-cover w-full"
+              className="flex rounded-md object-cover w-full"
               src="./image/3.jpg"
               alt=""
             />
