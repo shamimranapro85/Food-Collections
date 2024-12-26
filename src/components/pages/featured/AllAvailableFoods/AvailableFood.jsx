@@ -13,6 +13,7 @@ const AvailableFood = () => {
   const [allFoods, setAllFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
+  const [checkLayout, setCheckLayout] = useState(true);
   const [LayOut, setLayout] = useState(
     "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
   );
@@ -67,11 +68,20 @@ const AvailableFood = () => {
           onChange={handleSearch}
         />
         <button className="btn btn-sm" onClick={handleSort}>
+          
           Sort By Expire Date {sortOrder === "asc" ? "↑" : "↓"}
         </button>
         <button
           className="btn btn-sm"
-          onClick={() => setLayout("grid-cols-2 md:grid-cols-2 lg:grid-cols-2")}
+          onClick={() => {
+            if (checkLayout) {
+              setCheckLayout(!checkLayout);
+              setLayout("grid-cols-2 md:grid-cols-2 lg:grid-cols-2");
+            } else {
+              setCheckLayout(!checkLayout);
+              setLayout("grid-cols-1 md:grid-cols-2 lg:grid-cols-3");
+            }
+          }}
         >
           Change Layout
         </button>

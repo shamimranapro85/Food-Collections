@@ -68,7 +68,9 @@ const Home = () => {
                   )}
                 </p>
                 <button
-                  onClick={() => navigate(`/food/${item._id}`, { state: item._id })}
+                  onClick={() =>
+                    navigate(`/food/${item._id}`, { state: item._id })
+                  }
                   className="btn  btn-sm bg-green-400"
                 >
                   View Details

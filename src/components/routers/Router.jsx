@@ -27,7 +27,9 @@ import ManageMyFoods from "../pages/featured/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../pages/featured/MyFoodRequest/MyFoodRequest";
 import Home from "../pages/home/Home";
 import ViewDetails from "../pages/featured/View Details/ViewDetails";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const queryClient = new QueryClient();
 export const AllRouter = () => {
   const axiosInstance = useInterceptor();
   const Selected_UserDAta = useSelector((state) => state.UserSate);
@@ -39,7 +41,7 @@ export const AllRouter = () => {
 
   const onLoginOutClick = (message) => {
     signOut(auth);
-    toast.warning('LogOut', {
+    toast.warning("LogOut", {
       position: "top-center",
       autoClose: 500,
       hideProgressBar: true,
@@ -49,7 +51,7 @@ export const AllRouter = () => {
       progress: undefined,
       theme: "light",
       transition: Flip,
-      });
+    });
     return navigate("/login");
   };
 
@@ -104,7 +106,9 @@ export const AllRouter = () => {
           path="/mymanagefoods"
           element={
             <Private>
-              <ManageMyFoods />
+              <QueryClientProvider client={queryClient}>
+                <ManageMyFoods />
+              </QueryClientProvider>
             </Private>
           }
         ></Route>
