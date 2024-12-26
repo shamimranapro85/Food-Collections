@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import { fetchAnyData } from "../../../redux/slice/FetchAnyData";
 import Spinner from "../../shared/Spinner";
 import { fetchAllAvailableFood } from "../../../redux/slice/allAvailableFood";
-
+import { CiGrid42 } from "react-icons/ci";
 const AvailableFood = () => {
   const { data, error, loading } = useSelector(
     (state) => state.fetchAvailableFoodState
@@ -60,31 +60,32 @@ const AvailableFood = () => {
       <h1 className="text-center font-bold text-4xl pb-4">
         All Available Foods
       </h1>
-      <div className="flex gap-2 p-2 flex-wrap w-full justify-end items-center">
+      <div className="flex gap-2 p-2 flex-wrap w-full justify-between items-center">
         <input
           placeholder="Search Food"
           className="input-sm border rounded-lg"
           value={searchTerm}
           onChange={handleSearch}
         />
-        <button className="btn btn-sm" onClick={handleSort}>
-          
-          Sort By Expire Date {sortOrder === "asc" ? "↑" : "↓"}
-        </button>
-        <button
-          className="btn btn-sm"
-          onClick={() => {
-            if (checkLayout) {
-              setCheckLayout(!checkLayout);
-              setLayout("grid-cols-2 md:grid-cols-2 lg:grid-cols-2");
-            } else {
-              setCheckLayout(!checkLayout);
-              setLayout("grid-cols-1 md:grid-cols-2 lg:grid-cols-3");
-            }
-          }}
-        >
-          Change Layout
-        </button>
+        <div>
+          <button className="btn btn-sm" onClick={handleSort}>
+            Sort By Expire Date {sortOrder === "asc" ? "↑" : "↓"}
+          </button>
+          <button
+            className="btn btn-sm"
+            onClick={() => {
+              if (checkLayout) {
+                setCheckLayout(!checkLayout);
+                setLayout("grid-cols-2 md:grid-cols-2 lg:grid-cols-2");
+              } else {
+                setCheckLayout(!checkLayout);
+                setLayout("grid-cols-1 md:grid-cols-2 lg:grid-cols-3");
+              }
+            }}
+          >
+            <CiGrid42 />
+          </button>
+        </div>
       </div>
       <div className={`grid py-4   px-4  ${LayOut}  gap-4 border rounded-md`}>
         {filteredFoods.length > 0 ? (
