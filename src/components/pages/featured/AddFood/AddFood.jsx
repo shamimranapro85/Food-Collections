@@ -21,11 +21,7 @@ const AddFood = () => {
     const data = Object.fromEntries(formData.entries());
 
     const newData = {
-      ...data,
-      status: "available",
-      foodDonationEmail: email,
-      foodDonationEmailDisplayName: displayName,
-      foodDonationEmailPhotoURL: photoURL,
+      ...data
     };
     dispatch(postData({ url: "/addFood", data: newData }));
     toast.success("Food added", {
@@ -50,7 +46,7 @@ const AddFood = () => {
           <h1 className="text-5xl font-bold">Add Food</h1>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form onSubmit={onSubmitted} className="card-body">
+          <form onSubmit={onSubmitted} className="card-body grid grid-cols-1 md:grid-cols-2">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Food Name</span>
@@ -111,6 +107,49 @@ const AddFood = () => {
                 required
               />
             </div>
+            {/* //////////////////////////////////////////////////////////////////////////////////////////// */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Donator Name</span>
+              </label>
+              <input
+                name="foodDonationEmailDisplayName"
+                type="text"
+                readOnly
+                defaultValue={displayName}
+                placeholder="Enter Expire date"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Donator Email</span>
+              </label>
+              <input
+                name="foodDonationEmail"
+                type="email"
+                readOnly
+                defaultValue={email}
+                placeholder="Enter Expire date"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Donator Image</span>
+              </label>
+              <input
+                name="foodDonationEmailPhotoURL"
+                type="email"
+                readOnly
+                defaultValue={photoURL}
+                placeholder="Enter Expire date"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Additional Notes</span>
@@ -122,6 +161,19 @@ const AddFood = () => {
                 className="input input-bordered"
                 required
               />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Food Status</span>
+              </label>
+              <select
+                name="status"
+                className="select select-bordered"
+                defaultValue="available"
+                required
+              >
+                <option value="available">Available</option>
+              </select>
             </div>
 
             <div className="form-control mt-6">
