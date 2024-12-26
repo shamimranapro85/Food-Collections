@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Flip, toast } from "react-toastify";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 
@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const Login = () => {
+  const Selected_UserDAta = useSelector((state) => state.UserSate);
   const axiosInstance = useInterceptor();
   const [showPass, setShowPass] = useState(false);
   const functionState = useSelector((state) => state.functionState);
@@ -66,6 +67,12 @@ const Login = () => {
   };
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Selected_UserDAta?.user) {
+      navigate("/");
+    }
+  }, [Selected_UserDAta, navigate]);
 
   const [err, setError] = useState("");
 
@@ -122,6 +129,7 @@ const Login = () => {
         console.log(err);
       });
   };
+
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col ">
