@@ -26,7 +26,7 @@ const ViewDetails = () => {
   }, [dispatch, param.id, rdata]);
 
   const destrucDAta = data?.data;
-
+  const [dataAdditional, setDdditionalDetails] = useState(destrucDAta?.additionalDetails);
   const handleRequestClick = () => {
     setIsModalOpen(true);
   };
@@ -38,6 +38,10 @@ const ViewDetails = () => {
   if (loading) {
     return <Spinner />;
   }
+
+  const HandleChange = (e) => {
+    setDdditionalDetails(e.target.value);
+  };
 
   const onSubmitRequest = (e) => {
     e.preventDefault();
@@ -82,7 +86,9 @@ const ViewDetails = () => {
           Author:
           <span className="lowercase">{destrucDAta?.foodDonationEmail}</span>
         </h1>
-        <h1 className="capitalize">details: {destrucDAta?.details}</h1>
+        <h1 className="capitalize">
+          details: {destrucDAta?.additionalDetails}
+        </h1>
         {destrucDAta?.status === "requested" ? (
           <button disabled className="btn bg-red-300">
             This Item not Available
@@ -97,7 +103,6 @@ const ViewDetails = () => {
         )}
       </div>
 
-    
       {isModalOpen && (
         <div
           onClick={(e) => {
@@ -205,7 +210,7 @@ const ViewDetails = () => {
                   <span className="label-text">Your Email</span>
                 </label>
                 <input
-                name="requester"
+                  name="requester"
                   className="input input-bordered"
                   readOnly
                   type="text"
@@ -228,11 +233,11 @@ const ViewDetails = () => {
                   <span className="label-text">Additional Note</span>
                 </label>
                 <textarea
+                  onChange={HandleChange}
                   className="border border-gray-200 textarea"
                   type="text"
-                  value={destrucDAta?.additionalDetails}
+                  value={dataAdditional}
                   name="additionalDetails"
-                  
                 />
               </div>
 
