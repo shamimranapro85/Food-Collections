@@ -33,7 +33,7 @@ const Home = () => {
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error loading data.</div>;
+    return <div className="text-center text-red-500">Network error/backend server error for loading data.</div>;
   }
 
   return (
