@@ -51,9 +51,5 @@ The Food Order website is designed to manage and browse food donations. Users ca
    npm run dev
    ```
 
-## Contributions
-Contributions are welcome! Please create a pull request or open an issue for feature requests and bug reports.
 
-## License
-This project is licensed under the MIT License.
 
