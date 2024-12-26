@@ -64,9 +64,13 @@ const ViewDetails = () => {
     closeModal();
   };
 
+ 
+
   const today = new Date();
   const dateOnly = today.toISOString().split("T")[0];
-
+  if(!destrucDAta){
+      return <div className="text-4xl text-center text-red-400">Id is Invalid</div>
+  }
   return (
     <div className="w-full flex justify-center py-8 items-center">
       <div className="rounded-lg p-3 shadow-lg flex gap-1 flex-col">
