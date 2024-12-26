@@ -154,6 +154,16 @@ const ManageMyFoods = () => {
               }
               placeholder="Location"
             />
+            Expire Date
+            <input
+              type="date"
+              className="input input-bordered w-full mt-2"
+              value={selectedItem.ExpDate}
+              onChange={(e) =>
+                setSelectedItem({ ...selectedItem, ExpDate: e.target.value })
+              }
+              placeholder="Location"
+            />
             Quantity
             <input
               type="text"
@@ -174,7 +184,7 @@ const ManageMyFoods = () => {
               }
               placeholder="Quantity"
             />
-          Additional Details
+            Additional Details
             <textarea
               className="textarea textarea-bordered w-full mt-2"
               value={selectedItem.additionalDetails}
@@ -183,6 +193,10 @@ const ManageMyFoods = () => {
               }
               placeholder="Details"
             />
+            <p className="text-gray-400 text-center">
+              I could not changed 'Food Requester information and status' without permission
+              admin/requester, I want to delete Foods or another information 
+            </p>
             <div className="modal-action">
               <button onClick={handleUpdate} className="btn bg-green-500">
                 Update
