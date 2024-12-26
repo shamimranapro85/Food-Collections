@@ -189,7 +189,7 @@ const ManageMyFoods = () => {
               className="textarea textarea-bordered w-full mt-2"
               value={selectedItem.additionalDetails}
               onChange={(e) =>
-                setSelectedItem({ ...selectedItem, details: e.target.value })
+                setSelectedItem({ ...selectedItem, additionalDetails: e.target.value })
               }
               placeholder="Details"
             />
