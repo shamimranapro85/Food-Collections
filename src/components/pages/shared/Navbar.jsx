@@ -78,7 +78,7 @@ const Navbar = () => {
              
               <div className="group relative ">
                 <NavLink
-                  to={"/Profile"}
+                  to={"/"}
                   className={
                     "btn-sm group btn-circle btn overflow-hidden capitalize"
                   }
