@@ -9,11 +9,13 @@ const fetchMyFoods = async (email) => {
   return response.data;
 };
 const ManageMyFoods = () => {
-  const { user } = useSelector((state) => state.UserSate);
   const queryClient = useQueryClient();
 
-  const [selectedItem, setSelectedItem] = useState(null);
   const [modalType, setModalType] = useState(null);
+
+  const { user } = useSelector((state) => state.UserSate);
+
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["myFoods", user.email],
@@ -131,7 +133,8 @@ const ManageMyFoods = () => {
       {modalType === "update" && selectedItem && (
         <div className="modal modal-open">
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Update Food</h3>
+            <h3 className="font-bold text-lg mb-3">Update Food</h3>
+            Name
             <input
               type="text"
               className="input input-bordered w-full mt-2"
@@ -141,6 +144,7 @@ const ManageMyFoods = () => {
               }
               placeholder="Food Name"
             />
+            Pickup Location
             <input
               type="text"
               className="input input-bordered w-full mt-2"
@@ -150,6 +154,7 @@ const ManageMyFoods = () => {
               }
               placeholder="Location"
             />
+            Quantity
             <input
               type="text"
               className="input input-bordered w-full mt-2"
@@ -159,9 +164,20 @@ const ManageMyFoods = () => {
               }
               placeholder="Quantity"
             />
+            Food Image
+            <input
+              type="text"
+              className="input input-bordered w-full mt-2"
+              value={selectedItem.image}
+              onChange={(e) =>
+                setSelectedItem({ ...selectedItem, image: e.target.value })
+              }
+              placeholder="Quantity"
+            />
+          Additional Details
             <textarea
               className="textarea textarea-bordered w-full mt-2"
-              value={selectedItem.details}
+              value={selectedItem.additionalDetails}
               onChange={(e) =>
                 setSelectedItem({ ...selectedItem, details: e.target.value })
               }
