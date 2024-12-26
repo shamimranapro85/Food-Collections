@@ -33,7 +33,7 @@ const SpecialOffers = () => {
             Special Offers
           </h2>
           <p className="text-base-content">
-            Don’t miss out on our exclusive deals and discounts. Order now!
+            Don’t miss out on our exclusive deals and discounts. you can try your best for receive best food 
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
