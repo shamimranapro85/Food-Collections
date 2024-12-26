@@ -97,7 +97,7 @@ const ViewDetails = () => {
         )}
       </div>
 
-      {/* Modal */}
+    
       {isModalOpen && (
         <div
           onClick={(e) => {
@@ -230,8 +230,9 @@ const ViewDetails = () => {
                 <textarea
                   className="border border-gray-200 textarea"
                   type="text"
+                  value={destrucDAta?.additionalDetails}
                   name="additionalDetails"
-                  placeholder="Type your Additional Note"
+                  
                 />
               </div>
 

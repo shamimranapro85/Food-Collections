@@ -155,7 +155,7 @@ const AddFood = () => {
                 <span className="label-text">Additional Notes</span>
               </label>
               <input
-                name="details"
+                name="additionalDetails"
                 type="text"
                 placeholder="Enter additional details"
                 className="input input-bordered"
