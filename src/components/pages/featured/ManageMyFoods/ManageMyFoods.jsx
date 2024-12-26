@@ -186,7 +186,7 @@ const ManageMyFoods = () => {
         <div className="modal modal-open">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Delete Food</h3>
-            <p>Are you sure you want to delete {selectedItem.name}?</p>
+            <p>Are confirm to delete ?</p>
             <div className="modal-action">
               <button onClick={handleDelete} className="btn bg-red-500">
                 Delete
