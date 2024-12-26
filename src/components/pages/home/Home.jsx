@@ -3,7 +3,7 @@ import Slider from "../featured/Another slide etc/Slider";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAnyData } from "../../redux/slice/FetchAnyData";
 import Spinner from "../shared/Spinner";
-import { Link, NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import ContactSection from "../featured/extra/Contact";
 import SpecialOffers from "../featured/extra/Spacial";
 
@@ -87,7 +87,6 @@ const Home = () => {
           </NavLink>
         </div>
       </div>
-      {/* contact  */}
       <SpecialOffers />
       <ContactSection />
     </div>
