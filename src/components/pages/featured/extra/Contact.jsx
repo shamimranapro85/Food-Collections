@@ -5,7 +5,7 @@ const ContactSection = () => {
     <section className=" py-16">
       <div className="container mx-auto px-4">
         <div className="text-center py-2">
-          <h2 className="text-3xl font-bold text-primary mb-4">Contact Us</h2>
+          <h2 className="text-3xl font-bold  mb-4">Contact Us</h2>
           <p className="text-base-content">
             Need help with your order? Contact us for support or feedback.
           </p>

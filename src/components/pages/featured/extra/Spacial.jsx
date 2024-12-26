@@ -29,7 +29,7 @@ const SpecialOffers = () => {
     <section className=" py-16">
       <div className="container mx-auto px-4">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-primary mb-6">
+          <h2 className="text-3xl font-bold  mb-6">
             Special Offers
           </h2>
           <p className="text-base-content">
@@ -50,7 +50,7 @@ const SpecialOffers = () => {
                 />
               </figure>
               <div className="card-body">
-                <h3 className="text-xl font-bold text-primary">{offer.title}</h3>
+                <h3 className="text-xl font-bold ">{offer.title}</h3>
                 <p className="text-base-content">{offer.description}</p>
                 <p className="text-sm text-gray-500 italic">{offer.validTill}</p>
                
